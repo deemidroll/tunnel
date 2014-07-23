@@ -1,0 +1,6 @@
+node_modules
+assets/js/vendor
+src/js/globalVendorDependencies
+src/js/modifiersForVendorDependencies
+bower_components
+build

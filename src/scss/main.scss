@@ -1,5 +1,11 @@
 @import '../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/normalize';
 
+* {
+    // fix bold fonts on mac
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
 .check-gulp-scss-task {
     color: red;
 }

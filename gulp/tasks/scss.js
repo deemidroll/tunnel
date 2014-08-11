@@ -17,7 +17,7 @@ gulp.task('scss', function() {
         ])
         .on('error', handleErrors)
         .pipe(sass({style: 'compressed'}))
-        .pipe(prefix('last 2 version'))
+        .pipe(prefix('last 3 version'))
         .pipe(minifycss())
         .pipe(concat('app.css'))
         .pipe(header(banner))

@@ -6,7 +6,6 @@ Skeleton for projects based on gulp
 
 - separate tasks are in ./gulp/tasks/
 - browserify (with browserify-shim)
-- angular (from npm)
 - bootstrap-sass (from npm)
 - LiveReload
 - Static Server
@@ -27,12 +26,6 @@ Gulp must be installed globally in order to use the command line tools. *You may
 npm install -g gulp
 ```
 
-### Install Compass (if you haven't already)
-The gulp-compass module relies on Compass already being installed on your system.
-```
-gem update --system
-gem install compass
-```
 ### Install npm dependencies
 ```
 npm install

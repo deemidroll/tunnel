@@ -8,18 +8,19 @@ var gulp = require('gulp'),
     concat = require('gulp-concat'),
     minifycss = require('gulp-minify-css'),
     handleErrors = require('../util/handleErrors'),
+    config = require('../config').sass,
     header = require('gulp-header'),
     banner = '/* Made by 5_ | 2014 */';
 
-gulp.task('scss', function() {
-    gulp.src([
-        './src/scss/**/*.scss'
-        ])
-        .on('error', handleErrors)
-        .pipe(sass({style: 'compressed'}))
+gulp.task('sass', function() {
+    gulp.src(config.src)
+        .pipe(sass({
+            style: 'compressed'
+        }))
         .pipe(prefix('last 3 version'))
         .pipe(minifycss())
         .pipe(concat('app.css'))
         .pipe(header(banner))
-        .pipe(gulp.dest('build/css'));
+        .on('error', handleErrors)
+        .pipe(gulp.dest(config.dest));
 });

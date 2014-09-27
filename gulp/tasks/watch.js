@@ -1,9 +1,13 @@
-var gulp = require('gulp');
+/* Notes:
+   - gulp/tasks/browserify.js handles js recompiling with watchify
+   - gulp/tasks/browserSync.js watches and reloads compiled files
+*/
+
+var gulp  = require('gulp');
+var config= require('../config');
 
 gulp.task('watch', ['setWatch', 'browserSync'], function() {
-    gulp.watch('src/scss/**', ['scss']);
-    gulp.watch('src/img/**', ['img']);
-    gulp.watch('src/html/**', ['copyhtml']);
-    gulp.watch('src/js/vendor/**', ['copyVendor']);
-    // Note: The browserify task handles js recompiling with watchify
+  gulp.watch(config.sass.src,   ['sass']);
+  gulp.watch(config.images.src, ['images']);
+  gulp.watch(config.markup.src, ['markup']);
 });

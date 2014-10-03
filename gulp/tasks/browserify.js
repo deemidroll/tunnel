@@ -5,12 +5,14 @@
    If the watch task is running, this uses watchify instead
    of browserify for faster bundling using caching.
 */
-var gulp         = require('gulp'),
-    browserify   = require('browserify'),
-    watchify     = require('watchify'),
+var gulp = require('gulp'),
+    browserify = require('browserify'),
+    watchify = require('watchify'),
+    uglify = require('gulp-uglify'),
+    streamify = require('gulp-streamify'),
     bundleLogger = require('../util/bundleLogger'),
     handleErrors = require('../util/handleErrors'),
-    source       = require('vinyl-source-stream');
+    source = require('vinyl-source-stream');
 
 gulp.task('browserify', function() {
 
@@ -34,6 +36,7 @@ gulp.task('browserify', function() {
             // stream gulp compatible. Specifiy the
             // desired output filename here.
             .pipe(source('app.js'))
+            .pipe(streamify(uglify()))
             // Specify the output destination
             .pipe(gulp.dest('./build/js/'))
             // Log when bundling completes!

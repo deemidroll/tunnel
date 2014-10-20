@@ -8,19 +8,28 @@ var gulp = require('gulp'),
     concat = require('gulp-concat'),
     minifycss = require('gulp-minify-css'),
     handleErrors = require('../util/handleErrors'),
-    config = require('../config').sass,
+    config = require('../config'),
     header = require('gulp-header'),
-    banner = '/* Made by 5_ | 2014 */';
+    gulpif = require('gulp-if'),
+    minimist = require('minimist'),
+    banner = '/* ' + config.banner + ' */\n';
+
+var knownOptions = {
+    string: 'env',
+    default: { env: process.env.NODE_ENV || 'dev' }
+};
+var options = minimist(process.argv.slice(2), knownOptions);
 
 gulp.task('sass', function() {
-    gulp.src(config.src)
+    gulp.src(config.sass.src)
         .pipe(sass({
             style: 'compressed'
         }))
         .pipe(prefix('last 3 version'))
-        .pipe(minifycss())
+        // only minify in production
+        .pipe(gulpif(options.env === 'prod', minifycss()))
         .pipe(concat('app.css'))
         .pipe(header(banner))
         .on('error', handleErrors)
-        .pipe(gulp.dest(config.dest));
+        .pipe(gulp.dest(config.sass.dest));
 });

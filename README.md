@@ -41,3 +41,10 @@ gulp
 This will create and run the task defined in `gulpfile.js`. If you're on OS X,
 and have Chrome installed, a window will open displaying the demo page. If not,
 you can visit http://localhost:8080 to view the test page.
+
+### Prepare to production
+```
+gulp --env prod
+```
+
+This will minify your js, css and html.

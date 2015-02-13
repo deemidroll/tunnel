@@ -39,5 +39,5 @@ module.exports = {
             outputName: 'app.js'
         }]
     },
-    banner: 'Made by deemidroll | 2014 | deemidroll@gmail.com'
+    banner: 'Made by deemidroll | 2015 | deemidroll@gmail.com'
 };

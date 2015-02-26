@@ -1,6 +1,9 @@
+var Detector = window.Detector;
 var THREE = window.THREE;
 
 var animate = require('./animate.js');
+
+if (! Detector.webgl) Detector.addGetWebGLMessage();
 
 var camera, scene, renderer;
 
